@@ -1,4 +1,4 @@
-module task-proto
+module proto
 
 go 1.21
 

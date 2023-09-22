@@ -8,7 +8,6 @@ import (
 	"sync"
 
 	"google.golang.org/grpc"
-	pb "task-proto/task/v1"
 )
 
 type taskServiceServer struct {
