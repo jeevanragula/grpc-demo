@@ -1,18 +1,19 @@
 package main
 
 import (
+	pb "client/task/v1"
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"log"
-	pb "task-proto/task/v1"
 )
 
 func main() {
-	serverAddress := "localhost:50051" // Replace with the address of your gRPC server
+	serverAddress := "localhost:5000"
 
 	// Set up a connection to the server
-	conn, err := grpc.Dial(serverAddress, grpc.WithInsecure())
+	conn, err := grpc.Dial(serverAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Failed to connect: %v", err)
 	}
@@ -42,8 +43,5 @@ func main() {
 	}
 	fmt.Printf("Retrieved Task: %v\n", getTaskResponse)
 
-	// Implement other CRUD operations similarly
-
-	// Close the connection gracefully
 	conn.Close()
 }

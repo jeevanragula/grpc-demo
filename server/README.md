@@ -9,7 +9,7 @@ You can install the Go Protocol Buffers plugin using the go get command:
 ````
 go install google.golang.org/protobuf/cmd/protoc-gen-go
 
-protoc --go_out=. --go-grpc_out=. task.proto
+protoc --go_out=. --go-grpc_out=. proto/task.proto
 ````
 
 This command generates Go code for both Protocol Buffers messages and gRPC service definitions. The --go_out flag generates code for Protocol Buffers, and the --go-grpc_out flag generates code for gRPC.
