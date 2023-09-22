@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option go_package = "task/v1";
+
+// Define a package for your service
+package proto;
+
+// Import the gRPC package
+import "google/protobuf/empty.proto";
+
+// Task entity definition
+message Task {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+// Service definition
+service TaskService {
+  // Create a new task
+  rpc CreateTask (CreateTaskRequest) returns (Task);
+
+  // Retrieve a task by ID
+  rpc GetTask (GetTaskRequest) returns (Task);
+
+  // Update an existing task
+  rpc UpdateTask (UpdateTaskRequest) returns (Task);
+
+  // Delete a task by ID
+  rpc DeleteTask (DeleteTaskRequest) returns (google.protobuf.Empty);
+
+  // List all tasks
+  rpc ListTasks (ListTasksRequest) returns (stream Task);
+}
+
+// Request messages
+message CreateTaskRequest {
+  string title = 1;
+  string description = 2;
+}
+
+message GetTaskRequest {
+  int64 id = 1;
+}
+
+message UpdateTaskRequest {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message DeleteTaskRequest {
+  int64 id = 1;
+}
+
+message ListTasksRequest {
+  // You can add request parameters here if needed
+}
+
